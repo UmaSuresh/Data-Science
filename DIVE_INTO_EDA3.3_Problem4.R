@@ -1,13 +1,9 @@
-load("~/R-Software/.RData")
-getwd()
-setwd('C:/Users/usureshkumar/Documents/R-Software')
+
+pseudo_facebook <- read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/pseudo_facebook.tsv")
 list.files()
 install.packages(('ggplot2'))
 library(ggplot2)
-summary(pf)
-summary(dat)
 summary(uma)
-uma <- read.csc(file='pseudo_facebook.tsv', sep='\t')
 uma <- read.csv(file='pseudo_facebook.tsv', sep='\t')
 summary(uma)
 qplot(x=age,y=friend_count,data=pf)
@@ -41,7 +37,6 @@ ggplot(aes(x=age,y=friendships_initiated),data = uma)+geom_point(alpha = 1/20)+
 ggplot(aes(x=age,y=friendships_initiated),data = uma)+geom_point(alpha = 1/10 ,position = position_jitter(h=0))+
   xlim(13,90) +
   coord_trans(y = 'sqrt') 
-
 ggplot(aes(x=age,y=friendships_initiated),data = uma)+geom_point(alpha = 1/10 ,position = position_jitter(h=0))+
   xlim(13,90) +
   coord_trans(y = 'sqrt') 
@@ -49,9 +44,9 @@ require(dplyr)
 age_groups <- group_by(uma , age)
 uma.fc_byage <- summarise(age_groups , friend_count_mean =mean(friend_count), friend_count_median=median(friend_count),n=n())
 head(uma.fc_byage)
-uma %>% group_by(age)%>%
-  +   summarise(friend_count_mean =mean(friend_count),
-                +             friend_count_median=median(friend_count)
+uma % > % group_by(age)% > %
+  +   summarise(friend_count_mean = mean(uma.fc_byage$friend_count),
+                +             friend_count_median ) = median(uma.fc_byage$friend_count)
 ggplot(aes(x=age,y=friend_count),data = uma)+
   xlim(13,90)+
   geom_point(alpha = .05 ,
