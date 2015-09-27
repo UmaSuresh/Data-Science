@@ -74,3 +74,6 @@ qplot(x= friend_count ,data = subset(pf , !is.na(gender)),
 qplot(x = www_likes, data = subset(pf,!is.na(gender)),
       geom = 'freqpoly' , color = gender) +
   scale_x_continuous() + scale_x_log10()
+qplot(x = friend_count, data = subset(pf,!is.na(gender)),
+      stat = "bin" , geom = 'histogram' , horiz = TRUE , color = gender) +
+  scale_x_continuous() + scale_x_log10()

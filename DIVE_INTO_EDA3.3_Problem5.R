@@ -48,5 +48,21 @@ table(pf$year_joined.bucket , useNA = 'ifany')
 ggplot(aes(x = age, y = friend_count),
        data = subset(pf, !is.na(year_joined.bucket))) +
   geom_line(aes(color = year_joined.bucket),  stat = 'summary' , fun.y =median )
+ggplot(aes(x = age, y = friend_count),
+       data = subset(pf, !is.na(gender))) +
+  geom_bar(aes(color = gender),  stat = 'summary' , fun.y =median )
+install.packages("data.table")
+library(data.table)
+pf$ages.bucket <- cut(pf$age, breaks = c(18,29,50,64,100))
+table(pf$ages.bucket ,useNA = 'ifany')
 
-      
+ggplot(aes(x = age, y = friend_count),
+       data =subset(pf, !is.na(ages.bucket))) +
+  geom_histogram(aes(color = ages.bucket),  stat = 'summary' , fun.y =median)
+ggplot(aes(x = ages.bucket , y = friend_count),
+       data =subset(pf, !is.na(ages.bucket))) +
+  geom_histogram(aes(color = ages.bucket),  stat = 'summary' ,fun.y =median)
+
+ggplot(aes(x = ages.bucket , y = friend_count),
+       data =subset(pf, !is.na(gender))) +
+  geom_histogram(aes(color = ages.bucket),  stat = 'summary' ,fun.y =median)
