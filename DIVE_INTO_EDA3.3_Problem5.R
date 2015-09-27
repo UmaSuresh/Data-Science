@@ -64,5 +64,17 @@ ggplot(aes(x = ages.bucket , y = friend_count),
   geom_histogram(aes(color = ages.bucket),  stat = 'summary' ,fun.y =median)
 
 ggplot(aes(x = ages.bucket , y = friend_count),
-       data =subset(pf, !is.na(gender))) +
-  geom_histogram(aes(color = ages.bucket),  stat = 'summary' ,fun.y =median)
+       data =subset(pf, !is.na(pf$ages.bucket))) +
+  geom_histogram(aes(color = ages.bucket),  stat = 'summary' ,fill = 'darkblue' ,  fun.y =median)
+
+summary(pf)
+summary(pf$ages.bucket)
+table(pf$ages.bucket ,useNA = 'ifany')
+qplot(x=friend_count ,data=pf)+scale_x_continuous(limits = c(0,1000))
+## Adjusting the bin width Solution
+qplot(x=friend_count ,data=pf , xlim = c(0,1000),
+      xlab = seq(0,1000,50), binwidth=5 ) +
+  facet_wrap(~ages.bucket)
+
+
+
