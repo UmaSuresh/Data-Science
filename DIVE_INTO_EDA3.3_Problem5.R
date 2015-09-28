@@ -1,3 +1,19 @@
+setwd("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/")
+getwd()
+list.files()
+## list of packages
+library(ggplot2)
+library(ggplot2)
+library(dplyr)
+require(reshape2)
+library(reshape2)
+install.packages("data.table")
+library(data.table)
+
+pseudo_facebook <-  read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/pseudo_facebook.tsv")
+View(pseudo_facebook)
+pf <- read.csv('pseudo_facebook.tsv',sep = '\t')
+names(pf)
 ## Third Qualitative variable
 ggplot(aes(x = gender, y = age),
        data = subset(pf, !is.na(gender))) + geom_boxplot() +
@@ -5,8 +21,7 @@ ggplot(aes(x = gender, y = age),
 ggplot(aes(x = age, y = friend_count),
        data = subset(pf, !is.na(gender))) +
   geom_line(aes(color = gender),  stat = 'summary' , fun.y =median )
-install.packages('dplyr')
-library(dplyr)
+
 ## chain function together %.%
 pf.fc_by_age_gender <- pf %>%
   group_by(age, gender) %>%
@@ -17,19 +32,13 @@ pf.fc_by_age_gender <- pf %>%
   arrange(age)
 head(pf.fc_by_age_gender)
 ## Plotting Conditional Summaries
-install.packages('reshape2')
-require(reshape2)
-library(reshape2)
+
 pf.fc_by_age_gender.wide <- dcast(pf.fc_by_age_gender,
                                   age ~ gender ,
                                   value.var = 'median_friend_count')
 head(pf.fc_by_age_gender.wide)
 ## Ratio Plot Solution
-install.packages('ggplot2')
-library(ggplot2)
-install.packages('ggplot2')
-require(ggplot2)
-library(ggplot2)
+
 ggplot(aes(x = age, y = female / male),
         data = pf.fc_by_age_gender.wide) +
   geom_line() +
@@ -51,8 +60,7 @@ ggplot(aes(x = age, y = friend_count),
 ggplot(aes(x = age, y = friend_count),
        data = subset(pf, !is.na(gender))) +
   geom_bar(aes(color = gender),  stat = 'summary' , fun.y =median )
-install.packages("data.table")
-library(data.table)
+
 pf$ages.bucket <- cut(pf$age, breaks = c(18,29,50,64,100))
 table(pf$ages.bucket ,useNA = 'ifany')
 
