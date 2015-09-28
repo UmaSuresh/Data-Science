@@ -1,13 +1,14 @@
 setwd("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/")
 getwd()
 list.files()
+
 ## list of packages
 library(ggplot2)
 library(dplyr)
 library(reshape2)
 library(data.table)
 
-pseudo_facebook <-  read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/pseudo_facebook.tsv")
+pseudo_facebook <-  read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Data/pseudo_facebook.tsv")
 View(pseudo_facebook)
 pf <- read.csv('pseudo_facebook.tsv',sep = '\t')
 names(pf)
@@ -34,6 +35,7 @@ pf.fc_by_age_gender.wide <- dcast(pf.fc_by_age_gender,
                                   age ~ gender ,
                                   value.var = 'median_friend_count')
 head(pf.fc_by_age_gender.wide)
+
 ## Ratio Plot Solution
 
 ggplot(aes(x = age, y = female / male),
@@ -49,6 +51,7 @@ table(pf$year_joined)
 ?cut
 pf$year_joined.bucket <- cut(pf$year_joined,
                             c(2004,2009,2011,2012,2014))
+
  ## Plotting it All Together
 table(pf$year_joined.bucket , useNA = 'ifany')
 ggplot(aes(x = age, y = friend_count),
@@ -71,15 +74,4 @@ ggplot(aes(x = ages.bucket , y = friend_count),
 ggplot(aes(x = ages.bucket , y = friend_count),
        data =subset(pf, !is.na(pf$ages.bucket))) +
   geom_histogram(aes(color = ages.bucket),  stat = 'summary' ,fill = 'darkblue' ,  fun.y =median)
-
-summary(pf)
-summary(pf$ages.bucket)
-table(pf$ages.bucket ,useNA = 'ifany')
-qplot(x=friend_count ,data=pf)+scale_x_continuous(limits = c(0,1000))
-## Adjusting the bin width Solution
-qplot(x=friend_count ,data=pf , xlim = c(0,1000),
-      xlab = seq(0,1000,50), binwidth=5 ) +
-  facet_wrap(~ages.bucket)
-
-
 

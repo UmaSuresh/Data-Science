@@ -8,7 +8,7 @@ library(dplyr)
 library(reshape2)
 library(data.table)getwd()
 
-pseudo_facebook <-  read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/pseudo_facebook.tsv")
+pseudo_facebook <-  read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Data/pseudo_facebook.tsv")
 View(pseudo_facebook)
 pf <- read.csv('pseudo_facebook.tsv',sep = '\t')
 names(pf)
