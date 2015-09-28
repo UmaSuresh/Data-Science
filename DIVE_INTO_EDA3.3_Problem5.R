@@ -3,11 +3,8 @@ getwd()
 list.files()
 ## list of packages
 library(ggplot2)
-library(ggplot2)
 library(dplyr)
-require(reshape2)
 library(reshape2)
-install.packages("data.table")
 library(data.table)
 
 pseudo_facebook <-  read.delim("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/pseudo_facebook.tsv")
