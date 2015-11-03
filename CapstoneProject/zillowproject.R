@@ -33,8 +33,8 @@ library(RCurl)
 
 # Reading Data set.
 
-## x <- getURL('https://github.com/UmaSuresh/Data-Science/tree/master/CapstoneProject/zillow.csv')
-## zdat <- read.csv(text = x)
+#zzdat <- read.csv('https://github.com/UmaSuresh/Data-Science/blob/master/CapstoneProject/zillow.csv')
+
 zdat <- read.csv('C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Data/Zillow.csv')
 names(zdat)
 
