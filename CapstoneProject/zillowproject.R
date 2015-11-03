@@ -3,7 +3,7 @@
 ## area that were sold on Febrauary ,2015. The data shown below was extracted from www.zillow.com. 
 
 
-setwd("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Capstone Project")
+##setwd("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Capstone Project")
 ##setwd("https://github.com/UmaSuresh/Data-Science/tree/master/Capstone%20Project")
 ##getwd()
 ##list.files()
@@ -33,7 +33,7 @@ library(RCurl)
 
 # Reading Data set.
 
-## x <- getURL('https:/github.com/UmaSuresh/Data-Science/blob/master/Data/zillow.csv')
+## x <- getURL('https://github.com/UmaSuresh/Data-Science/tree/master/CapstoneProject/zillow.csv')
 ## zdat <- read.csv(text = x)
 zdat <- read.csv('C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Data/Zillow.csv')
 names(zdat)
@@ -47,12 +47,14 @@ m <- abline(lm(y ~ x))
 fit <- lm( y~x)
 
 ## summary of overall data Coefficients.
-
+summary(zdat)
+coef(zdat)
 summary(fit)
 zillowcoef <- coef(fit)
 abline(coef(fit)[1:2])
 coef(fit)
 cordat <- cor(zdat$zesFeb ,zdat$soldFeb)
+
 str(zdat)
 
 

@@ -2,8 +2,9 @@
 ## My project examines the final sold prices of homes versus the "Zestimate" sales prices for Bay Area ,California
 ## area that were sold on Febrauary ,2015. The data shown below was extracted from www.zillow.com. 
 
-#setwd("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Capstone Project")
-# setwd("https://github.com/UmaSuresh/Data-Science/tree/master/Data")
+
+setwd("C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Capstone Project")
+##setwd("https://github.com/UmaSuresh/Data-Science/tree/master/Capstone%20Project")
 ##getwd()
 ##list.files()
 ## list of packages
@@ -33,7 +34,7 @@ library(RCurl)
 # Reading Data set.
 
 ## x <- getURL('https:/github.com/UmaSuresh/Data-Science/blob/master/Data/zillow.csv')
-# zdat <- read.csv('https://github.com/UmaSuresh/Data-Science/tree/master/Data/zillow.csv')
+## zdat <- read.csv(text = x)
 zdat <- read.csv('C:/Users/usureshkumar/Documents/R-Software/Dive into EDA -Project files/Data-Science/Data/Zillow.csv')
 names(zdat)
 
@@ -114,7 +115,7 @@ se(zdat$soldFeb)
 ## Plotting against only  LA Data
 
 plot(x= LAS$zesFeb , y = LAS$soldFeb ,xlab="Zestimate(inDollars)" , ylab="Actual Sold Price(in Dollars)" , 
-     main="Zestimates  Vs Actual Sold Price on Feb,2015-Los Angeles")
+      main="Zestimates  Vs Actual Sold Price on Feb,2015-Los Angeles")
 m1 <- abline(lm(y ~ x))
 fitLA <- lm( y~x)
 summary(fitLA)
@@ -128,7 +129,7 @@ plot(x= SFO$zesFeb , y = SFO$soldFeb ,xlab="Zestimate(inDollars)" , ylab="Actual
 m2 <- abline(lm(y ~ x))
 fitSFO <- lm( y~x)
 
-## San Jose Data
+ ## San Jose Data
 
 plot(x= SJC$zesFeb , y = SJC$soldFeb ,xlab="Zestimate(inDollars)" , ylab="Actual Sold Price(in Dollars)" , 
      main="Zestimates  Vs Actual Sold Price on February ,2015 - San Jose")
@@ -141,8 +142,8 @@ fitSJC <- lm( y~x)
 
 ## finding residuals
 
-a <- zdat$zesFeb
-b <- zdat$soldFeb
+ a <- zdat$zesFeb
+ b <- zdat$soldFeb
 zdat$residuals <- a-b
 r <- cor(a,b)
 rsquare <- r * r
@@ -196,7 +197,7 @@ plot(d , xlab = "Zestimates" , main = " Density of Zestimates Values for the mon
 metro.f <- factor(zdat$Metro , levels = c("San Francisco" , "San Jose" , "Los Angeles-Long Beach-Anaheim, CA"))
 sm.density.compare(zdat$zesFeb , metro.f , xlab = "Zestimates Values(in Dollars)" )+
   title(main = " Density Plots for Metro Area for Feb , 2015")
-
+   
 # add legend via mouse click 
 
 require(sm)
